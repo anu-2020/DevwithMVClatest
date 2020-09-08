@@ -1,0 +1,23 @@
+﻿@using DevwithMVClatest.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+
+@(Html.DevExtreme().DataGrid<test>()
+    .ShowBorders(true)
+    .DataSource(d => d.WebApi().Controller("New").LoadAction("Get").Key("Id"))
+    
+    .Columns(columns => {
+        columns.AddFor(m => m.Id);
+        columns.AddFor(m => m.Description);
+    })
+    //.Paging(p => p.PageSize(10))
+    //.FilterRow(f => f.Visible(true))
+    //.HeaderFilter(f => f.Visible(true))
+    //.GroupPanel(p => p.Visible(true))
+    //.Grouping(g => g.AutoExpandAll(false))
+    //.RemoteOperations(true)
+    )
